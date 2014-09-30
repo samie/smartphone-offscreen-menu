@@ -1,0 +1,54 @@
+@mixin mobile-device-viewport {
+	
+	// Show an outline of a device for non-mobile viewport widths
+	@media screen and (min-width: 800px) {
+    
+    .v-generated-body {
+      width: 320px;
+      height: 568px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -160px;
+      margin-top: -284px;
+      overflow: visible;
+      
+      &:before {
+        content: "";
+        position: absolute;
+        top: -80px;
+        right: -12px;
+        bottom: -80px;
+        left: -12px;
+        background: #222;
+        border-radius: 45px;
+      }
+    }
+    
+    .v-app,
+    .v-ui.v-scrollable,
+    .app-view {
+      height: 100% !important;
+      overflow: hidden !important;
+    }
+    
+    .v-overlay-container {
+      height: 0 !important;
+    }
+    
+    .app-menu,
+    .app-menu-toggle,
+    .app-titlebar {
+      position: absolute !important;
+    }
+    
+    .app-content {
+      overflow: auto;
+      position: absolute !important;
+      top: 0;
+      bottom: 0;
+    }
+    
+	}
+	
+}
