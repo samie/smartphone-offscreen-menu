@@ -189,9 +189,10 @@ public class MobileNavigationSampleUI extends UI {
         final CssLayout menu = new CssLayout() {
             {
                 addStyleName(ValoTheme.MENU_ROOT);
+
                 /**
                  * Build the list of buttons for the menu, which trigger the
-                 * view changes.
+                 * view changes. The first one is selected by default.
                  */
                 for (final MobileView view : views) {
                     Button menuItem = new Button(view.getName());
@@ -224,7 +225,12 @@ public class MobileNavigationSampleUI extends UI {
         });
 
         // Add all views to the Navigator
+        boolean initialViewAdded = false;
         for (MobileView view : views) {
+            if (!initialViewAdded) {
+                navigator.addView("", view);
+                initialViewAdded = true;
+            }
             navigator.addView(getUri(view.getName()), view);
         }
 
@@ -240,25 +246,24 @@ public class MobileNavigationSampleUI extends UI {
             @Override
             public void afterViewChange(ViewChangeEvent event) {
                 // Update the selection state of the menu items
+                boolean oneSelected = false;
                 for (Iterator<Component> it = menu.iterator(); it.hasNext();) {
                     Component item = it.next();
                     if (getUri(item.getCaption()).equals(event.getViewName())) {
                         item.addStyleName("selected");
+                        oneSelected = true;
                     } else {
                         item.removeStyleName("selected");
                     }
+                }
+                if (!oneSelected) {
+                    menu.iterator().next().addStyleName("selected");
                 }
 
                 // Close the menu
                 appView.hideMenu();
             }
         });
-
-        // Open the default view
-        if (navigator.getState() == null || navigator.getState().equals("")) {
-            navigator.navigateTo(getUri(HomeView.NAME));
-        }
-
     }
 
     String getUri(String name) {

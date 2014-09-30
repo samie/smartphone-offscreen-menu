@@ -17,7 +17,7 @@ $v-layout-margin-left: round($v-unit-size / 2);
 
 // Remove unnecessary components for this demo. 
 // Can be omitted in production (but you should still optimize your production stylesheet)
-$v-included-components: button, label, orderedlayout, valo-menu;
+$v-included-components: button, label, orderedlayout, valo-menu, notification;
 
 
 
@@ -40,8 +40,9 @@ $v-included-components: button, label, orderedlayout, valo-menu;
   @include valo;
   
   // Fix for retina
-  .v-app-loading::before {
-    background-size: 50%;
+  .v-app-loading:before {
+    -webkit-background-size: 50% 50%;
+    background-size: 50% 50%;
   }
 
   .app-menu,
