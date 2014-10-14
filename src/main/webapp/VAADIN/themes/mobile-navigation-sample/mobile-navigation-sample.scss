@@ -1,0 +1,187 @@
+$app-main-color: hsl(178, 96%, 34%);
+$v-app-background-color: adjust-color($app-main-color, $saturation: -100%, $lightness: 100%);
+
+$v-font-size: 17px;
+$v-unit-size: 44px;
+$app-titlebar-padding-top: 20px;
+$app-titlebar-height: $v-unit-size + $app-titlebar-padding-top;
+
+$app-menu-width: 276px;
+$app-menu-background-color: adjust-color($app-main-color, $saturation: -50%, $lightness: -50%);
+
+$v-layout-margin-top: round($v-unit-size / 2);
+$v-layout-margin-right: round($v-unit-size / 2);
+$v-layout-margin-bottom: round($v-unit-size / 2);
+$v-layout-margin-left: round($v-unit-size / 2);
+
+
+// Remove unnecessary components for this demo. 
+// Can be omitted in production (but you should still optimize your production stylesheet)
+$v-included-components: button, label, orderedlayout, valo-menu, notification;
+
+
+
+@import "../valo/valo";
+@import "mobile-device-viewport";
+
+
+
+// Make the BODY element scrollable (better for mobile browsers)
+@include valo-natural-page-scrolling;
+
+
+
+// For demo purposes only, can be omitted in production
+@include mobile-device-viewport;
+
+
+
+@mixin mobile-navigation-sample {
+  @include valo;
+  
+  // Fix for retina
+  .v-app-loading:before {
+    -webkit-background-size: 50% 50%;
+    background-size: 50% 50%;
+  }
+
+  .app-menu,
+  .app-menu-toggle,
+  .app-titlebar,
+  .app-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    @include transform(translateX(0%));
+    @include transition(all 260ms);
+  }
+  
+  .app-toobar {
+    top: auto;
+    bottom: 0;
+  }
+  
+  .app-menu {
+    @include transform(translateX(-10%));
+    z-index: 1;
+    bottom: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-top: $app-titlebar-padding-top;
+    font-size: $v-font-size;
+    line-height: $v-unit-size;
+    
+    .valo-menu-item {
+      height: $v-unit-size;
+    }
+  }
+  
+  .app-menu-toggle,
+  .app-titlebar,
+  .app-toolbar,
+  .app-content {
+    z-index: 2;
+  }
+  
+  .app-menu-toggle {
+    top: $app-titlebar-padding-top;
+    width: $v-unit-size;
+    height: $v-unit-size;
+    line-height: $v-unit-size;
+    outline: none;
+    cursor: pointer;
+    opacity: 0.5;
+    
+    &:active {
+      opacity: 1;
+    }
+    
+    > span {
+      width: $v-unit-size - 8px - 8px;
+      height: 18px;
+      margin: round(($v-unit-size - 18px) / 2) auto;
+      display: block;
+      
+      > span {
+        display: block;
+	      height: 1px;
+	      background: #fff;
+	      @include box-shadow(0 8px 0 #fff, 0 16px 0 #fff);
+      }
+    }
+  }
+  
+  .app-titlebar {
+    background: $app-main-color;
+    color: valo-font-color($app-main-color, 1);
+    height: $app-titlebar-height !important;
+    padding-top: $app-titlebar-padding-top;
+    line-height: $v-unit-size;
+	  text-align: center;
+	  
+	  .v-label {
+	   color: valo-font-color($app-main-color, 1);
+	   text-align: center;
+	   position: absolute;
+	   z-index: 1;
+	   left: 0;
+	   right: 0;
+	  }
+  }
+  
+  .app-titlebar-button {
+    width: $v-unit-size;
+    height: $v-unit-size;
+    text-align: center;
+    outline: none;
+    opacity: .5;
+    position: relative;
+    z-index: 2;
+    
+    &:active {
+      opacity: 1;
+    }
+    
+    &.left {
+      float: left;
+    }
+  }
+  
+  .app-content {
+    background-color: $v-app-background-color;
+    position: relative;
+    padding-top: $app-titlebar-height;
+    min-height: 568px;
+    @include box-shadow(0 0 20px rgba(0,0,0,.3));
+    
+    @include transform(translateX(0%));
+    @include transition(all 260ms);
+  }
+  
+  .app-menu-visible {
+    overflow: hidden;
+  
+    .app-menu {
+      @include transform(translateX(0%));
+    }
+    
+    .app-titlebar,
+    .app-menu-toggle,
+    .app-content {
+      @include transform(translateX($app-menu-width));
+    }
+    
+    .app-menu-toggle {
+      bottom: 0;
+      height: auto;
+    }
+  }
+  
+  .app-menu-toggle-hidden .app-menu-toggle {
+    opacity: 0;
+    @include transform(translateX(-100%));
+  }
+  
+}
+

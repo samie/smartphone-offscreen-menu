@@ -1,0 +1,9 @@
+@import "addons.scss";
+@import "mobile-navigation-sample.scss";
+
+/* This file prefixes all rules with the theme name to avoid causing conflicts with other themes. */
+/* The actual styles should be defined in mobile-navigation-sample.scss */
+.mobile-navigation-sample {
+  @include addons;
+  @include mobile-navigation-sample;
+}
