@@ -1,4 +1,4 @@
-Mobile navigation sample for Vaadin
+Smartphone off-screen navigation sample
 ==
 
 A small sample how to build a common navigation pattern with Vaadin that works on smartphones.
@@ -14,7 +14,7 @@ Make sure you have installed [Maven](http://maven.apache.org/) and [Git](http://
     git clone https://github.com/vaadin-samples/smartphone-offscreen-menu.git
     cd smartphone-offscreen-menu
     mvn jetty:run
-    
+
 After these steps you have the application up and running at http://localhost:8080/
 
 ### License
