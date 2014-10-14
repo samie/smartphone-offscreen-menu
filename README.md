@@ -12,7 +12,7 @@ http://jouni.app.fi/mobile-navigation-sample/
 Make sure you have installed [Maven](http://maven.apache.org/) and [Git](http://git-scm.com/).
 
     git clone https://github.com/vaadin-samples/smartphone-offscreen-menu.git
-    cd hello-world
+    cd smartphone-offscreen-menu
     mvn jetty:run
     
 After these steps you have the application up and running at http://localhost:8080/
