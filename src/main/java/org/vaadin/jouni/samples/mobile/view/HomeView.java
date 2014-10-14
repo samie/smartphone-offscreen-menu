@@ -30,7 +30,7 @@ public class HomeView extends MobileView {
             addComponent(new Label(
                     "A simple tech demo for a mobile navigation pattern. Tap the menu icon to switch views."));
             Label info = new Label(
-                    "Built with <a href=\"https://vaadin.com\">Vaadin</a>. Available on <a href=\"https://www.github.com/jounik/mobile-navigation-sample\">GitHub</a>.",
+                    "Built with <a href=\"https://vaadin.com\">Vaadin</a>. Available on <a href=\"https://www.github.com/vaadin-samples/mobile-navigation-sample\">GitHub</a>.",
                     ContentMode.HTML);
             addComponent(info);
             addComponent(new Label(
