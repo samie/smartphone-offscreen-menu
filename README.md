@@ -3,8 +3,7 @@ Mobile navigation sample for Vaadin
 
 A small sample how to build a common navigation pattern with Vaadin that works on smartphones.
 
-Live Demo
-==
+### Live Demo
 
 http://jouni.app.fi/mobile-navigation-sample/
 
